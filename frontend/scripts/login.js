@@ -31,11 +31,10 @@ async function login(event){
         window.location.href = "index.html";
         } else {
             alert("Usuario ou senha invalidos!");
-
-            } 
-        } catch(error){
+                    }
+                }
+        }catch(error){
             console.error("Erro na requisição de login", error);
             alert("Erro ao conectar com o servidor.");
         }
     }
-}
