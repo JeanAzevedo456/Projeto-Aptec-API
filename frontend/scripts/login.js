@@ -5,9 +5,15 @@ const API_URL = "http://localhost:8080";
 async function login(event) {
     event.preventDefault(); // Impede o comportamento padrão do formulário de recarregar a página ao submeter
 
-    // Captura os valores digitados nos campos de texto da tela de login
-    const usernameInput = document.getElementById("username").value;
-    const passwordInput = document.getElementById("password").value;
+    // Captura os elementos de entrada da tela de login
+    const usernameInput = document.getElementById("username");
+    const passwordInput = document.getElementById("password");
+
+    // Validação de preenchimento dos campos
+    if (!usernameInput.value || !passwordInput.value) {
+        alert("Por favor, preencha o usuário e a senha.");
+        return;
+    }
 
     try {
         // Realiza a requisição POST para o endpoint /login da API Spring Boot
@@ -19,8 +25,8 @@ async function login(event) {
             },
             // Converte o objeto JavaScript com as credenciais para uma String JSON
             body: JSON.stringify({
-                username: usernameInput,
-                password: passwordInput
+                username: usernameInput.value,
+                password: passwordInput.value
             })
         });
 
